@@ -1,0 +1,28 @@
+.header {
+  background: #F3EDF7;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.30), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-bottom: 30px;
+
+  &-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+
+    &__langBtn,
+    &__searchBtn {
+      background: none;
+      outline: none;
+      border: none;
+      font-size: 25px;
+    }
+
+    &__title {
+      font-family: 'RM', sans-serif;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 28px;
+    }
+  }
+}

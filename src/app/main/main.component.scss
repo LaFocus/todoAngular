@@ -1,0 +1,60 @@
+.main {
+
+  &-inner {
+
+    &-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+
+      &__title {
+        color: #323232;
+        font-family: 'RR', sans-serif;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 28px;
+      }
+
+      &__modeToggleBtn {
+        border-radius: 16px;
+        padding: 16px;
+        border: none;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: linear-gradient(0deg, rgba(103, 80, 164, 0.11) 0%, rgba(103, 80, 164, 0.11) 100%), #FFFBFE;
+        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.30), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
+
+        & span {
+          color: #6750A4;
+          text-align: center;
+          font-family: 'RR', sans-serif;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 20px;
+          letter-spacing: 0.1px;
+        }
+      }
+    }
+
+    &-notes {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+    }
+
+    &__addBtn {
+      border: none;
+      border-radius: 16px;
+      padding: 16px;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(0deg, rgba(103, 80, 164, 0.11) 0%, rgba(103, 80, 164, 0.11) 100%), #FFFBFE;
+      box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.25);
+    }
+  }
+}
