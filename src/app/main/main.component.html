@@ -8,13 +8,11 @@
       </button>
     </div>
     <div class="main-inner-notes">
-      <app-mainNote></app-mainNote>
-      <app-mainNote></app-mainNote>
-      <app-mainNote></app-mainNote>
-      <app-mainNote></app-mainNote>
+      <app-mainNote *ngFor="let note of notesArr; index as i" [note]="note" [i]="i"></app-mainNote>
     </div>
-    <button class="main-inner__addBtn">
+    <button class="main-inner__addBtn" (click)="addNote('124', '124')">
       <img src="../../assets/images/addBtnIcon.svg" alt="">
     </button>
   </div>
+  <app-editNote (modalChanged)="onModalChanged($event)" *ngIf="modal"></app-editNote>
 </main>

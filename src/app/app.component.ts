@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todolist';
+  ngOnInit() {
+    !localStorage.getItem('notes') ? localStorage.setItem('notes', '[]') : '' 
+  }
 }

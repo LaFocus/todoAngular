@@ -1,14 +1,14 @@
 <div class="mainNote">
     <div class="mainNote-inner">
-        <h4 class="mainNote-inner__title">Title</h4>
-        <p class="mainNote-inner__date">07.03.2022</p>
-        <p class="mainNote-inner__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+        <h4 class="mainNote-inner__title">{{ note.name }}</h4>
+        <p class="mainNote-inner__date">{{ note.date }}</p>
+        <p class="mainNote-inner__text">{{ note.value }}</p>
         <div class="mainNote-inner-btns">
             <button class="mainNote-inner-btns__edit">
                 <img src="../../../assets/images/editIcon.svg" alt="" srcset="">
                 Редактировать
             </button>
-            <button class="mainNote-inner-btns__delete">
+            <button class="mainNote-inner-btns__delete" (click)="deleteNote()">
                 <img src="../../../assets/images/deleteItem.svg" alt="" srcset="">
                 Удалить
             </button>

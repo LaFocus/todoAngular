@@ -1,0 +1,11 @@
+  <div class="editNote">
+    <div class="editNote-inner">
+      <h3 class="editNote-inner__title">Добавить Заметку</h3>
+      <input type="text" class="editNote-inner__name editNote-inner__input" placeholder="Title">
+      <input type="text" class="editNote-inner__value editNote-inner__input" placeholder="Content">
+      <div class="editNote-inner-btns">
+        <button class="editNote-inner-btns__cancel" (click)="closeModal(); onModalChanged()">Отмена</button>
+        <button class="editNote-inner-btns__add">Добавить</button>
+      </div>
+    </div>
+  </div>

@@ -5,13 +5,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { MainNoteComponent } from './main/mainNote/mainNote.component';
+import { editNoteComponent } from './main/editNoteWindow/editNote.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
     HeaderComponent, 
     MainComponent,
-    MainNoteComponent
+    MainNoteComponent,
+    editNoteComponent
   ],
   imports: [
     BrowserModule, 
