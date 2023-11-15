@@ -10,7 +10,7 @@
     <div class="main-inner-notes">
       <app-mainNote *ngFor="let note of notesArr; index as i" [note]="note" [i]="i"></app-mainNote>
     </div>
-    <button class="main-inner__addBtn" (click)="addNote('124', '124')">
+    <button class="main-inner__addBtn" (click)="openModal()">
       <img src="../../assets/images/addBtnIcon.svg" alt="">
     </button>
   </div>
