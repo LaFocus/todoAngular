@@ -1,9 +1,21 @@
 <header class="header">
-    <div class="header-inner">
-        <button class="header-inner__langBtn">RU</button>
-        <h3 class="header-inner__title">Заметки</h3>
-        <button class="header-inner__searchBtn">
-            <img src="../../assets/images/searchIcon.svg" alt="">
-        </button>
+  <div class="header-inner">
+    <div class="header-inner-top" *ngIf="!searchActivated">
+      <button class="header-inner-top__langBtn">RU</button>
+      <h3 class="header-inner-top__title">Заметки</h3>
+      <button class="header-inner-top__searchBtn" (click)="openSearchMode()">
+        <img src="../../assets/images/searchIcon.svg" alt="">
+      </button>
     </div>
+
+    <div class="header-inner-searchArea" *ngIf="searchActivated">
+      <button class="header-inner-searchArea__btn">
+        <img src="../../assets/images/cancelSearchBtn.svg" alt="">
+      </button>
+      <input class="header-inner-searchArea__input" type="text" [(ngModel)]="searchInput" placeholder="Поиск..." (change)="onEmitSearch()">
+      <button class="header-inner-searchArea__btn">
+        <img src="../../assets/images/closeSearch.svg" alt="">
+      </button>
+    </div>
+  </div>
 </header>

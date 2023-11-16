@@ -3,11 +3,11 @@
     <div class="main-inner-top">
       <h3 class="main-inner-top__title">Все заметки</h3>
       <button class="main-inner-top__modeToggleBtn" (click)="changeView()">
-        <img src="../../assets/images/modeToggleList.svg" alt="">
-        <span>Список</span>
+        <img [src]="grid ? '../../assets/images/modeToggleList.svg' : '../../assets/images/modeToggleGrid.svg'" alt="">
+        <span>{{grid ? 'Список' : 'Сетка'}}</span>
       </button>
     </div>
-    <div class="main-inner-notes" [style.gridTemplateColumns]="grid">
+    <div class="main-inner-notes" [style.gridTemplateColumns]="grid ? '1fr 1fr 1fr' : '1fr'">
       <app-mainNote *ngFor="let note of notesArr; index as i" [note]="note" [i]="i" (emitIndex)="onItemClicked($event)">
       </app-mainNote>
     </div>

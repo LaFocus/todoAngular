@@ -1,4 +1,4 @@
 <div>
-  <app-header></app-header>
-  <app-main></app-main>
+  <app-header (emitSearch)="onSearchEmitted($event)"></app-header>
+  <app-main [searchInput]="searchInput"></app-main>
 </div>

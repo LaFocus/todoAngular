@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Output, EventEmitter } from "@angular/core";
 
 @Component({
     selector: 'app-header',
@@ -6,4 +6,15 @@ import { Component } from "@angular/core";
     styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent {}
+export class HeaderComponent {
+    searchActivated: boolean = true
+    @Output() emitSearch = new EventEmitter<string>();
+    searchInput: string = ''
+
+    openSearchMode() {
+        this.searchActivated = true
+    }
+    onEmitSearch() {
+        this.emitSearch.emit(this.searchInput)
+    }
+}

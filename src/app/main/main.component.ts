@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-main',
@@ -8,10 +8,12 @@ import { Component } from '@angular/core';
 export class MainComponent {
   storage: any = localStorage;
   notesArr: any[] = JSON.parse(this.storage.getItem('notes'));
-  modal: boolean | any;
   currItemIndex: number = 0
+  modal: boolean | any;
   addBtn: boolean = true
-  grid: string = '1fr 1fr 1fr'
+  grid: boolean = true
+
+  @Input() searchInput: string = ''
 
   onModalChanged(value: boolean) {
     this.modal = value;
@@ -28,6 +30,15 @@ export class MainComponent {
     console.log(this.currItemIndex); 
   }
   changeView() {
-    this.grid === '1fr' ? this.grid = '1fr 1fr 1fr' : this.grid = '1fr'
+    this.grid = !this.grid
+  }
+
+  searchNote(value: string) {
+    const valueLower = value.toLowerCase()
+
+    this.notesArr.filter((note) => {
+      note.name.toLowerCase().includes(valueLower) || 
+      note.value.toLowerCase().includes(valueLower) 
+    })
   }
 }
