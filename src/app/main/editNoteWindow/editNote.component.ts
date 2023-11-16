@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 // import { NgModel } from '@angular/forms';
 
 @Component({
@@ -11,6 +11,8 @@ export class editNoteComponent {
   storage: any = localStorage;
   noteName: string = '';
   noteValue: string = '';
+  @Input() currItemIndex: string | number | any = ''
+  @Input() addBtn: boolean = true
 
   @Output() modalChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -30,7 +32,8 @@ export class editNoteComponent {
     };
     notes.push(noteObject);
     this.storage.setItem('notes', JSON.stringify(notes));
-    console.log(this.storage);
+    this.noteName = ''
+    this.noteValue = ''
   }
   editNote(i: number, name: string, value: string) {
     let notes: {
@@ -40,6 +43,7 @@ export class editNoteComponent {
     notes[i].name = name
     notes[i].value = value
     this.storage.setItem('notes', JSON.stringify(notes));
+    console.log(i, name, value);
   }
   closeModal() {
     this.modal = false;

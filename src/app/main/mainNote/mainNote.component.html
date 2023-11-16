@@ -4,7 +4,7 @@
         <p class="mainNote-inner__date">{{ note.date }}</p>
         <p class="mainNote-inner__text">{{ note.value }}</p>
         <div class="mainNote-inner-btns">
-            <button class="mainNote-inner-btns__edit">
+            <button class="mainNote-inner-btns__edit" (click)="editNote()">
                 <img src="../../../assets/images/editIcon.svg" alt="" srcset="">
                 Редактировать
             </button>

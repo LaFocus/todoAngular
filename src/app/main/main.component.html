@@ -2,17 +2,19 @@
   <div class="main-inner container">
     <div class="main-inner-top">
       <h3 class="main-inner-top__title">Все заметки</h3>
-      <button class="main-inner-top__modeToggleBtn">
+      <button class="main-inner-top__modeToggleBtn" (click)="changeView()">
         <img src="../../assets/images/modeToggleList.svg" alt="">
         <span>Список</span>
       </button>
     </div>
-    <div class="main-inner-notes">
-      <app-mainNote *ngFor="let note of notesArr; index as i" [note]="note" [i]="i"></app-mainNote>
+    <div class="main-inner-notes" [style.gridTemplateColumns]="grid">
+      <app-mainNote *ngFor="let note of notesArr; index as i" [note]="note" [i]="i" (emitIndex)="onItemClicked($event)">
+      </app-mainNote>
     </div>
     <button class="main-inner__addBtn" (click)="openModal()">
       <img src="../../assets/images/addBtnIcon.svg" alt="">
     </button>
   </div>
-  <app-editNote (modalChanged)="onModalChanged($event)" *ngIf="modal"></app-editNote>
+  <app-editNote (modalChanged)="onModalChanged($event)" *ngIf="modal"  [currItemIndex]="currItemIndex" [addBtn]="addBtn">
+  </app-editNote>
 </main>
