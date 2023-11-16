@@ -9,11 +9,11 @@
     </div>
 
     <div class="header-inner-searchArea" *ngIf="searchActivated">
-      <button class="header-inner-searchArea__btn">
+      <button class="header-inner-searchArea__btn" (click)="searchActivated = false">
         <img src="../../assets/images/cancelSearchBtn.svg" alt="">
       </button>
       <input class="header-inner-searchArea__input" type="text" [(ngModel)]="searchInput" placeholder="Поиск..." (change)="onEmitSearch()">
-      <button class="header-inner-searchArea__btn">
+      <button class="header-inner-searchArea__btn" (click)="searchInput = ''">
         <img src="../../assets/images/closeSearch.svg" alt="">
       </button>
     </div>

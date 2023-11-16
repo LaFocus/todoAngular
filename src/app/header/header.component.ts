@@ -7,7 +7,7 @@ import { Component, Output, EventEmitter } from "@angular/core";
 })
 
 export class HeaderComponent {
-    searchActivated: boolean = true
+    searchActivated: boolean = false
     @Output() emitSearch = new EventEmitter<string>();
     searchInput: string = ''
 

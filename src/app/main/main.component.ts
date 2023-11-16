@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-main',
@@ -8,12 +8,12 @@ import { Component, Input } from '@angular/core';
 export class MainComponent {
   storage: any = localStorage;
   notesArr: any[] = JSON.parse(this.storage.getItem('notes'));
-  currItemIndex: number = 0
+  currItemIndex: number = 0;
   modal: boolean | any;
-  addBtn: boolean = true
-  grid: boolean = true
+  addBtn: boolean = true;
+  grid: boolean = true;
 
-  @Input() searchInput: string = ''
+  @Input() searchInput: string = '';
 
   onModalChanged(value: boolean) {
     this.modal = value;
@@ -21,24 +21,32 @@ export class MainComponent {
   }
   openModal() {
     this.modal = true;
-    this.addBtn = true
+    this.addBtn = true;
   }
   onItemClicked(value: any) {
-    this.currItemIndex = value
-    this.modal = true
-    this.addBtn = false
-    console.log(this.currItemIndex); 
+    this.currItemIndex = value;
+    this.modal = true;
+    this.addBtn = false;
+    console.log(this.currItemIndex);
   }
   changeView() {
-    this.grid = !this.grid
+    this.grid = !this.grid;
   }
 
   searchNote(value: string) {
-    const valueLower = value.toLowerCase()
+    const valueLower = value.toLowerCase();
 
     this.notesArr.filter((note) => {
-      note.name.toLowerCase().includes(valueLower) || 
-      note.value.toLowerCase().includes(valueLower) 
-    })
+      note.name == '2'
+    });
+
+    console.log(this.notesArr);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.searchInput) {
+      // Perform actions when searchInput changes
+      this.searchNote(this.searchInput);
+    }
   }
 }
