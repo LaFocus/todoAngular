@@ -8,8 +8,10 @@
       </button>
     </div>
     <div class="main-inner-notes" [style.gridTemplateColumns]="grid ? '1fr 1fr 1fr' : '1fr'">
-      <app-mainNote *ngFor="let note of notesArr; index as i" [note]="note" [i]="i" (emitIndex)="onItemClicked($event)">
-      </app-mainNote>
+      <div class="main-inner-notes__item" *ngFor="let note of notesArr; index as i" (emitIndex)="onItemClicked($event)" >
+        <app-mainNote *ngIf="searchInput === '' || note.name.toLowerCase().includes(searchInput)" [note]="note" [i]="i" >
+        </app-mainNote>
+      </div>
     </div>
     <button class="main-inner__addBtn" (click)="openModal()">
       <img src="../../assets/images/addBtnIcon.svg" alt="">

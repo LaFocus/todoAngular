@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-main',
@@ -33,20 +33,14 @@ export class MainComponent {
     this.grid = !this.grid;
   }
 
-  searchNote(value: string) {
-    const valueLower = value.toLowerCase();
+  // searchNote(value: string) {
+  //   this.notesArr = JSON.parse(this.storage.getItem('notes'));
+  //   this.notesArr = this.notesArr.filter((item) => item.name.toLowerCase().includes(value));
+  // }
 
-    this.notesArr.filter((note) => {
-      note.name == '2'
-    });
-
-    console.log(this.notesArr);
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (this.searchInput) {
-      // Perform actions when searchInput changes
-      this.searchNote(this.searchInput);
-    }
-  }
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   if (this.searchInput) {
+  //     this.searchNote(this.searchInput);
+  //   }
+  // }
 }

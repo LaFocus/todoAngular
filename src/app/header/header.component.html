@@ -12,7 +12,7 @@
       <button class="header-inner-searchArea__btn" (click)="searchActivated = false">
         <img src="../../assets/images/cancelSearchBtn.svg" alt="">
       </button>
-      <input class="header-inner-searchArea__input" type="text" [(ngModel)]="searchInput" placeholder="Поиск..." (change)="onEmitSearch()">
+      <input class="header-inner-searchArea__input" type="text" [(ngModel)]="searchInput" placeholder="Поиск..." (input)="onEmitSearch()">
       <button class="header-inner-searchArea__btn" (click)="searchInput = ''">
         <img src="../../assets/images/closeSearch.svg" alt="">
       </button>

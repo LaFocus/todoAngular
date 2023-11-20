@@ -1,20 +1,22 @@
-import { Component, Output, EventEmitter } from "@angular/core";
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
-    selector: 'app-header',
-    templateUrl: './header.component.html',
-    styleUrls: ['./header.component.scss']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
 })
-
 export class HeaderComponent {
-    searchActivated: boolean = false
-    @Output() emitSearch = new EventEmitter<string>();
-    searchInput: string = ''
+  searchActivated: boolean = false;
+  @Output() emitSearch = new EventEmitter<string>();
+  searchInput: string = '';
 
-    openSearchMode() {
-        this.searchActivated = true
-    }
-    onEmitSearch() {
-        this.emitSearch.emit(this.searchInput)
-    }
+  openSearchMode() {
+    this.searchActivated = true;
+  }
+  onEmitSearch() {
+    this.emitSearch.emit(this.searchInput);
+  }
+  closeSearch() {
+    
+  }
 }
