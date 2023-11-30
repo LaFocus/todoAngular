@@ -7,15 +7,12 @@
         <span>{{grid ? 'Список' : 'Сетка'}}</span>
       </button>
     </div>
-    <div class="main-inner-notes" [style.gridTemplateColumns]="grid ? '1fr 1fr 1fr' : '1fr'">
+    <div class="main-inner-notes" 
+      [ngStyle]="{'grid-template-columns': grid ? '1fr 1fr 1fr' : '1fr'}"
+    >
       <ng-container class="main-inner-notes__item" *ngFor="let note of notesArr; index as i">
-        <app-mainNote 
-          *ngIf="searchInput === '' || note.name.toLowerCase().includes(searchInput) && note.isVisible" 
-          [note]="note"d
-          [i]="i"
-          (emitIndex)="onItemClicked($event)"
-          (noteDeleted)="onNoteDeleted()"
-          >
+        <app-mainNote *ngIf="searchInput === '' || note.name.toLowerCase().includes(searchInput) && note.isVisible"
+          [note]="note" d [i]="i" (emitIndex)="onItemClicked($event)" (noteDeleted)="onNoteDeleted()">
         </app-mainNote>
       </ng-container>
     </div>
@@ -23,12 +20,7 @@
       <img src="../../assets/images/addBtnIcon.svg" alt="">
     </button>
   </div>
-  <app-editNote 
-    (modalChanged)="onModalChanged($event)" 
-    [currItemIndex]="currItemIndex" 
-    *ngIf="modal" 
-    [addBtn]="addBtn"
-    (noteEdited)="onNoteEditedorAdded()"
-  >
+  <app-editNote (modalChanged)="onModalChanged($event)" [currItemIndex]="currItemIndex" *ngIf="modal" [addBtn]="addBtn"
+    (noteEdited)="onNoteEditedorAdded()">
   </app-editNote>
 </main>

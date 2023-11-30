@@ -7,6 +7,9 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 30px;
+      @media screen and (max-width: 712px) {
+        justify-content: center;
+      }
 
       &__title {
         color: #323232;
@@ -26,6 +29,9 @@
         gap: 12px;
         background: linear-gradient(0deg, rgba(103, 80, 164, 0.11) 0%, rgba(103, 80, 164, 0.11) 100%), #FFFBFE;
         box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.30), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
+        @media screen and (max-width: 712px) {
+          display: none;
+        }
 
         & span {
           color: #6750A4;
@@ -42,8 +48,14 @@
 
     &-notes {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
       gap: 24px;
+
+      @media screen and (max-width: 1110px) {
+        grid-template-columns: 1fr 1fr !important;
+      }
+      @media screen and (max-width: 712px) {
+        grid-template-columns: 1fr !important;
+      }
     }
 
     &__addBtn {
