@@ -9,6 +9,12 @@ export class HeaderComponent {
   searchActivated: boolean = false;
   @Output() emitSearch = new EventEmitter<string>();
   searchInput: string = '';
+  navbar: string[] = [
+    'Home',
+    'About',
+    'Contacts',
+    'Reviews'
+  ]
 
   openSearchMode() {
     this.searchActivated = true;
@@ -16,7 +22,7 @@ export class HeaderComponent {
   onEmitSearch() {
     this.emitSearch.emit(this.searchInput);
   }
-  closeSearch() {
-    
+  logSearchElement(data: HTMLInputElement) {
+    console.log(data.value);
   }
 }

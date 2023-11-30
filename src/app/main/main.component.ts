@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class MainComponent {
   storage: any = localStorage;
-  notesArr: any[] = JSON.parse(this.storage.getItem('notes'));
+  notesArr: any[] = [];
   currItemIndex: number = 0;
   modal: boolean | any;
   addBtn: boolean = true;
@@ -19,28 +19,36 @@ export class MainComponent {
     this.modal = value;
     console.log(this.modal);
   }
+
   openModal() {
     this.modal = true;
     this.addBtn = true;
   }
+
   onItemClicked(value: any) {
     this.currItemIndex = value;
     this.modal = true;
     this.addBtn = false;
     console.log(this.currItemIndex);
   }
+
   changeView() {
     this.grid = !this.grid;
   }
 
-  // searchNote(value: string) {
-  //   this.notesArr = JSON.parse(this.storage.getItem('notes'));
-  //   this.notesArr = this.notesArr.filter((item) => item.name.toLowerCase().includes(value));
-  // }
+  onNoteDeleted(): void {
+    this.notesArr = this.getUpdatedNotes();
+  }
+  onNoteEditedorAdded(): void {
+    this.notesArr = this.getUpdatedNotes();
+    this.modal = false
+  }
 
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   if (this.searchInput) {
-  //     this.searchNote(this.searchInput);
-  //   }
-  // }
+  private getUpdatedNotes(): any[] {
+    return JSON.parse(this.storage.getItem('notes')) || [];
+  }
+
+  ngOnInit() {
+    this.notesArr = this.getUpdatedNotes();
+  }
 }

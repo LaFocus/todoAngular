@@ -8,15 +8,27 @@
       </button>
     </div>
     <div class="main-inner-notes" [style.gridTemplateColumns]="grid ? '1fr 1fr 1fr' : '1fr'">
-      <div class="main-inner-notes__item" *ngFor="let note of notesArr; index as i" (emitIndex)="onItemClicked($event)" >
-        <app-mainNote *ngIf="searchInput === '' || note.name.toLowerCase().includes(searchInput)" [note]="note" [i]="i" >
+      <ng-container class="main-inner-notes__item" *ngFor="let note of notesArr; index as i">
+        <app-mainNote 
+          *ngIf="searchInput === '' || note.name.toLowerCase().includes(searchInput) && note.isVisible" 
+          [note]="note"d
+          [i]="i"
+          (emitIndex)="onItemClicked($event)"
+          (noteDeleted)="onNoteDeleted()"
+          >
         </app-mainNote>
-      </div>
+      </ng-container>
     </div>
     <button class="main-inner__addBtn" (click)="openModal()">
       <img src="../../assets/images/addBtnIcon.svg" alt="">
     </button>
   </div>
-  <app-editNote (modalChanged)="onModalChanged($event)" *ngIf="modal"  [currItemIndex]="currItemIndex" [addBtn]="addBtn">
+  <app-editNote 
+    (modalChanged)="onModalChanged($event)" 
+    [currItemIndex]="currItemIndex" 
+    *ngIf="modal" 
+    [addBtn]="addBtn"
+    (noteEdited)="onNoteEditedorAdded()"
+  >
   </app-editNote>
 </main>

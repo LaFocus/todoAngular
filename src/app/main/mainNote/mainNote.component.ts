@@ -9,6 +9,7 @@ export class MainNoteComponent {
   @Input() note: any;
   @Input() i: any;
   @Output() emitIndex = new EventEmitter<any>();
+  @Output() noteDeleted = new EventEmitter<void>();
 
   storage: any = localStorage;
 
@@ -16,16 +17,20 @@ export class MainNoteComponent {
     let notes: {
       name: string;
       value: string;
+      isVisible: boolean; 
     }[] = JSON.parse(this.storage.getItem('notes')) || [];
+
     notes.splice(this.i, 1);
     this.storage.setItem('notes', JSON.stringify(notes));
+    this.noteDeleted.emit();
   }
+
   editNote() {
     let notes: {
       name: string;
       value: string;
+      isVisible: boolean;
     }[] = JSON.parse(this.storage.getItem('notes'));
-    const currNote: {} = notes[this.i];
     this.emitIndex.emit(this.i);
   }
 }

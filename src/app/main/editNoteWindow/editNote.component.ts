@@ -1,5 +1,4 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-// import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-editNote',
@@ -11,10 +10,11 @@ export class editNoteComponent {
   storage: any = localStorage;
   noteName: string = '';
   noteValue: string = '';
+
   @Input() currItemIndex: string | number | any = ''
   @Input() addBtn: boolean = true
-
   @Output() modalChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() noteEdited = new EventEmitter<void>();
 
   addNote(name: any, value: any) {
     let notes: {
@@ -34,6 +34,7 @@ export class editNoteComponent {
     this.storage.setItem('notes', JSON.stringify(notes));
     this.noteName = ''
     this.noteValue = ''
+    this.noteEdited.emit()
   }
   editNote(i: number, name: string, value: string) {
     let notes: {
@@ -44,6 +45,7 @@ export class editNoteComponent {
     notes[i].value = value
     this.storage.setItem('notes', JSON.stringify(notes));
     console.log(i, name, value);
+    this.noteEdited.emit()
   }
   closeModal() {
     this.modal = false;
